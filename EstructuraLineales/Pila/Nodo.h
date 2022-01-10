@@ -21,7 +21,7 @@ public:
 		this -> next = next;
 	}
 
-	T getData() const {
+	const T& getData() const {
 		return data;
 	}
 	

@@ -1,7 +1,8 @@
-#include <iostream>
-#include "Nodo.h"
+#ifndef STACK_H
+#define STACK_H
 
-const std::size_t EMPTY_STACK = 0;
+#include <iostream>
+#include "Node.h"
 
 template <typename T>
 class Stack {
@@ -20,33 +21,18 @@ private:
 		}
 	}
 
-public:
-	Stack() : last(nullptr){};
-
-/* Arreglar constructor de copia.
-	Stack(const Stack& rhs) {
-		std::size_t i = 0;
-		Stack aux;
-		while(i < rhs.size()){
-			aux.push(rhs[i]);
-			++i;
-		}
-		//cleanStack();
-		i = 0;
-		while(i < rhs.size()){
-			this -> push(aux.top());
-			aux.pop();
-			++i;
-		}
-	}
-*/
 	const T& operator[](const std::size_t index) const {
 		Node<T>* aux = last;
-		for(std::size_t i = 0; i < index && index < size(); i++){
+		std::size_t actualSize = size();
+
+		for(std::size_t i = 0; i < index && index < actualSize; i++){
 			aux = aux -> getNext();
 		}
 		return aux -> getData();
 	}
+
+public:
+	Stack() : last(nullptr){};
 
 	~Stack(){
 		cleanStack();
@@ -89,3 +75,5 @@ public:
 
 
 };
+
+#endif

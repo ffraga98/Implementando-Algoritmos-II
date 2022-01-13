@@ -2,7 +2,6 @@
 #define DOUBLY_LIST_H
 
 #include "doublyNode.h"
-#include <iostream>
 
 const int NO_ELEMENT = 0;
 const int FIRST_ELEMENT_INDEX = 1;
@@ -24,6 +23,12 @@ private:
 
 public:
 	doublyList() : first_(nullptr), last_(nullptr), size_(NO_ELEMENT){}
+
+	~doublyList(){
+		while(!empty()){
+			pop_back();
+		}
+	}
 
 	bool empty(){
 		return size_ == NO_ELEMENT;

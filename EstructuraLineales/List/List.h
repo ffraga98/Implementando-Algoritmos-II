@@ -23,7 +23,14 @@ private:
 
 public:
 	List() : first_(nullptr), size_(NO_ELEMENT){}
-	
+
+	//Copy constructor.
+	List(List<T> & rhs){
+		size_ = 0;
+		
+		for(int i = FIRST_ELEMENT_INDEX; i <= rhs.size(); i++)
+			this -> push_back(rhs[i]);
+	}
 	~List(){
 		while(!empty()){
 			pop_back();

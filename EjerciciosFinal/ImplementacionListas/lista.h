@@ -28,7 +28,8 @@ public:
         T dato;
         while( nodo != nullptr){
             dato = nodo -> obtener_dato();
-            insertar(dato,i);
+            insertar(dato,i); //Podriamos mejorar la eficiencia 
+            //si tenemos el nodo recien agregado. Debería modularizar el insertar().
             nodo = nodo -> obtener_siguiente();
             ++i;
         }
@@ -38,7 +39,11 @@ public:
     // Destructor
     // PRE:
     // POS: libera la memoria solicitada
-    ~Lista (){};
+    ~Lista (){
+        while(primero != nullptr){
+            eliminar(1);
+        }
+    };
 
     // Lista vacia?
     // PRE:
